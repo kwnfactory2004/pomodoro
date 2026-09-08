@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script>
+        // Tailwindのカスタムカラー設定
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepgreen: {
+                            DEFAULT: '#1b4332',
+                            light: '#2d6a4f'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+</head>
+<body class="bg-[#f5f5f7] flex items-center justify-center min-h-screen p-4 antialiased">
+
+    <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] w-full max-w-sm p-10 text-center flex flex-col items-center border border-gray-100/50">
+        
+        <div class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-8">Pomodoro</div>
+
+        <div class="relative flex justify-center items-center mb-10 w-full">
+            <!-- 背景の円 -->
+            <svg class="transform -rotate-90 w-72 h-72">
+                <circle cx="144" cy="144" r="130" stroke="currentColor" stroke-width="3" fill="transparent" class="text-gray-100" />
+                <!-- プログレスリング -->
+                <circle id="progress-ring" cx="144" cy="144" r="130" stroke="#1b4332" stroke-width="6" stroke-linecap="round" fill="transparent" class="transition-all duration-1000 ease-linear" />
+            </svg>
+            
+            <!-- 中央のテキスト -->
+            <div class="absolute flex flex-col items-center justify-center pointer-events-none mt-2">
+                <span id="time-display" class="text-7xl font-light text-gray-800 tabular-nums tracking-tighter">25:00</span>
+                <span id="status-text" class="text-sm font-medium text-gray-400 mt-2">作業に集中</span>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center gap-4 mb-8 w-full">
+            <!-- スタート/一時停止ボタン -->
+            <button id="start-btn" onclick="toggleTimer()" class="flex-1 py-4 rounded-full text-white font-medium text-lg bg-deepgreen hover:bg-deepgreen-light transition-all shadow-sm active:scale-95">
+                スタート
+            </button>
+            
+            <!-- リセットボタン -->
+            <button onclick="resetTimer()" class="w-16 h-16 flex justify-center items-center rounded-full bg-[#f5f5f7] hover:bg-gray-200 text-gray-600 transition-all active:scale-95" title="リセット">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="bg-[#f5f5f7] rounded-full py-2.5 px-6 flex items-center justify-center gap-3">
+            <span class="text-gray-400 font-medium text-xs uppercase tracking-wider">Completed</span>
+            <div id="session-count" class="font-semibold text-deepgreen flex items-baseline gap-1">
+                <span class="text-lg">0</span> <span class="text-xs">Pods</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 定数設定（25分, 5分, 15分）
+        const MODES = {
+            pomodoro: { time: 25 * 60, label: "作業に集中" },
+            shortBreak: { time: 5 * 60, label: "短い休憩" },
+            longBreak: { time: 15 * 60, label: "長い休憩" }
+        };
+
+        // 状態管理
+        let currentMode = 'pomodoro';
+        let timeLeft = MODES[currentMode].time;
+        let timerInterval = null;
+        let isRunning = false;
+        let completedSessions = 0;
+
+        // DOM要素の取得
+        const timeDisplay = document.getElementById('time-display');
+        const statusText = document.getElementById('status-text');
+        const startBtn = document.getElementById('start-btn');
+        const sessionCountDisplay = document.getElementById('session-count');
+        const progressRing = document.getElementById('progress-ring');
+        
+        // SVGリングの円周を計算して設定
+        const radius = progressRing.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius; 
+        progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressRing.style.strokeDashoffset = 0;
+
+        // 画面の表示を更新する関数
+        function updateDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timeDisplay.textContent = formattedTime;
+            document.title = `${formattedTime} - ${MODES[currentMode].label}`;
+
+            const totalTime = MODES[currentMode].time;
+            const percentage = timeLeft / totalTime;
+            const offset = circumference - (percentage * circumference);
+            progressRing.style.strokeDashoffset = offset;
+        }
+
+        // モードを切り替える関数
+        function setMode(mode) {
+            currentMode = mode;
+            timeLeft = MODES[mode].time;
+            statusText.textContent = MODES[mode].label;
+
+            if (mode === 'pomodoro') {
+                progressRing.setAttribute('stroke', '#1b4332'); // ディープグリーン
+            } else {
+                progressRing.setAttribute('stroke', '#3b82f6'); // 休憩はブルー
+            }
+
+            updateDisplay();
+        }
+
+        // タイマーの開始・一時停止
+        async function toggleTimer() {
+            if (typeof Tone !== 'undefined' && Tone.context.state !== 'running') {
+                try {
+                    await Tone.start();
+                } catch (e) {
+                    console.warn("オーディオの初期化に失敗しました", e);
+                }
+            }
+
+            if (isRunning) {
+                // 一時停止
+                clearInterval(timerInterval);
+                startBtn.textContent = '再開';
+                startBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+                startBtn.classList.add('bg-deepgreen', 'hover:bg-deepgreen-light');
+                isRunning = false;
+            } else {
+                // 開始
+                startBtn.textContent = '一時停止';
+                startBtn.classList.remove('bg-deepgreen', 'hover:bg-deepgreen-light');
+                startBtn.classList.add('bg-orange-500', 'hover:bg-orange-600');
+                isRunning = true;
+                
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateDisplay();
+
+                    if (timeLeft <= 0) {
+                        handleTimerComplete();
+                    }
+                }, 1000);
+            }
+        }
+
+        // タイマー終了時の処理（自動進行）
+        function handleTimerComplete() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            
+            playAlarm();
+
+            if (currentMode === 'pomodoro') {
+                completedSessions++;
+                const podText = completedSessions <= 1 ? "Pod" : "Pods";
+                sessionCountDisplay.innerHTML = `<span class="text-lg">${completedSessions}</span> <span class="text-xs">${podText}</span>`;
+                
+                if (completedSessions > 0 && completedSessions % 4 === 0) {
+                    setMode('longBreak');
+                } else {
+                    setMode('shortBreak');
+                }
+                toggleTimer(); // 自動スタート
+            } else {
+                if (completedSessions >= 4) {
+                    resetTimer(); // 1セット終了でリセット
+                } else {
+                    setMode('pomodoro');
+                    toggleTimer(); // 自動スタート
+                }
+            }
+        }
+
+        // タイマーのリセット
+        function resetTimer() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                isRunning = false;
+            }
+            
+            currentMode = 'pomodoro';
+            timeLeft = MODES[currentMode].time;
+            statusText.textContent = MODES[currentMode].label;
+            progressRing.setAttribute('stroke', '#1b4332');
+            
+            startBtn.textContent = 'スタート';
+            startBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+            startBtn.classList.add('bg-deepgreen', 'hover:bg-deepgreen-light');
+            
+            completedSessions = 0;
+            sessionCountDisplay.innerHTML = `<span class="text-lg">0</span> <span class="text-xs">Pods</span>`;
+            
+            updateDisplay();
+        }
+
+        // アラーム音の再生
+        function playAlarm() {
+            if (typeof Tone !== 'undefined') {
+                const synth = new Tone.Synth({
+                    oscillator: { type: "sine" },
+                    envelope: { attack: 0.02, decay: 0.8, sustain: 0.1, release: 2.5 }
+                }).toDestination();
+                
+                synth.volume.value = -10;
+                synth.triggerAttackRelease("A4", "1n");
+            }
+        }
+
+        // 初回表示設定
+        updateDisplay();
+    </script>
+</body>
+</html>
