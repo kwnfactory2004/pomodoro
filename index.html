@@ -25,9 +25,10 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     </style>
 </head>
-<body class="bg-[#f5f5f7] flex items-center justify-center min-h-screen p-4 antialiased">
+<body class="bg-[#f5f5f7] flex flex-col items-center justify-center min-h-screen p-4 antialiased">
 
-    <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] w-full max-w-sm p-10 text-center flex flex-col items-center border border-gray-100/50">
+    <!-- タイマーメイン画面 -->
+    <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] w-full max-w-sm p-10 text-center flex flex-col items-center border border-gray-100/50 mb-6">
         
         <div class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-8">Pomodoro</div>
 
@@ -65,6 +66,43 @@
             <div id="session-count" class="font-semibold text-deepgreen flex items-baseline gap-1">
                 <span class="text-lg">0</span> <span class="text-xs">Pods</span>
             </div>
+        </div>
+    </div>
+
+    <!-- ポモドーロタイマーとは ボタン -->
+    <button onclick="showModal()" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline underline-offset-4 decoration-gray-300">
+        ポモドーロタイマーとは
+    </button>
+
+    <!-- 説明ポップアップ (モーダル) -->
+    <div id="welcome-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 transform scale-95 transition-transform duration-300">
+            <div class="text-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">Pomodoro Timer<br><span class="text-sm text-gray-500 font-normal">（ポモドーロタイマー）とは</span></h2>
+            </div>
+            
+            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                <p>
+                    <span class="font-bold text-gray-800 border-b-2 border-deepgreen/30">作業の集中力と生産性を高める</span>ための時間管理メソッド「ポモドーロ・テクニック」を実践するためのタイマーです。
+                </p>
+                <p>
+                    1980年代後半にイタリアの起業家フランチェスコ・シリロ氏によって考案されました。<br>
+                    彼が学生時代にトマト型（イタリア語でポモドーロ）のキッチンタイマーを使って勉強していたことからこの名がついています。
+                </p>
+                
+                <div class="bg-gray-50 rounded-xl p-4 mt-6">
+                    <h3 class="font-semibold text-gray-800 mb-2">使い方説明</h3>
+                    <p class="text-xs text-gray-500 mb-3">基本の仕組みと動き（1サイクル）</p>
+                    <p class="font-medium text-deepgreen bg-deepgreen/5 p-3 rounded-lg text-center">
+                        「25分の作業」＋「5分の休憩」＝ 30分<br>
+                        <span class="text-xs text-gray-500 font-normal mt-1 block">を1つの単位（1ポモドーロ）として繰り返します。</span>
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full mt-8 py-3 rounded-xl bg-deepgreen text-white font-medium hover:bg-deepgreen-light transition-colors active:scale-95">
+                とじる
+            </button>
         </div>
     </div>
 
@@ -226,6 +264,38 @@
 
         // 初回表示設定
         updateDisplay();
+
+        // モーダル関連の処理
+        const modal = document.getElementById('welcome-modal');
+        
+        function showModal() {
+            modal.classList.remove('hidden');
+            // 少し遅らせてアニメーションさせる
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // ローカルストレージに表示済みを記録
+                localStorage.setItem('pomodoroVisited', 'true');
+            }, 300);
+        }
+
+        // 初回訪問時のみモーダルを表示
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('pomodoroVisited')) {
+                showModal();
+            }
+        });
     </script>
 </body>
 </html>
