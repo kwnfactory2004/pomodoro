@@ -1,10 +1,11 @@
 // ポモドーロタイマーService Worker
 // アプリを更新したら CACHE_VERSION の数字を上げると、確実に新しいキャッシュへ切り替わります。
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `pomodoro-${CACHE_VERSION}`;
 const PRECACHE = [
   './',
   './index.html',
+  './dotfont.js',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
