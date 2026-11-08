@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://kwnfactory2004.github.io; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0F382C">
     <title>ポモドーロタイマー</title>
     <link rel="icon" type="image/png" href="https://kwnfactory2004.github.io/webtools-aresenal/logo.png">
     <!-- PWA -->
@@ -13,102 +14,321 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="ポモドーロ">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-50{z-index:50}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-16{height:4rem}.h-6{height:1.5rem}.h-72{height:18rem}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-6{width:1.5rem}.w-72{width:18rem}.w-full{width:100%}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.-rotate-90{--tw-rotate:-90deg}.-rotate-90,.scale-100{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-100{--tw-scale-x:1;--tw-scale-y:1}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95}.scale-95,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-col{flex-direction:column}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.gap-1{gap:.25rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b-2{border-bottom-width:2px}.border-deepgreen\/30{border-color:rgba(15,76,58,.3)}.border-gray-100\/50{border-color:rgba(243,244,246,.5)}.bg-\[\#f5f5f7\]{--tw-bg-opacity:1;background-color:rgb(245 245 247/var(--tw-bg-opacity,1))}.bg-black\/40{background-color:rgba(0,0,0,.4)}.bg-deepgreen{--tw-bg-opacity:1;background-color:rgb(15 76 58/var(--tw-bg-opacity,1))}.bg-deepgreen\/5{background-color:rgba(15,76,58,.05)}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.p-10{padding:2.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-8{padding:2rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.text-center{text-align:center}.text-7xl{font-size:4.5rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.leading-relaxed{line-height:1.625}.tracking-tighter{letter-spacing:-.05em}.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}.text-deepgreen{--tw-text-opacity:1;color:rgb(15 76 58/var(--tw-text-opacity,1))}.text-gray-100{--tw-text-opacity:1;color:rgb(243 244 246/var(--tw-text-opacity,1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128/var(--tw-text-opacity,1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99/var(--tw-text-opacity,1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.decoration-gray-300{text-decoration-color:#d1d5db}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-\[0_20px_40px_-15px_rgba\(0\2c 0\2c 0\2c 0\.05\)\]{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-\[0_20px_40px_-15px_rgba\(0\2c 0\2c 0\2c 0\.05\)\]{--tw-shadow:0 20px 40px -15px rgba(0,0,0,.05);--tw-shadow-colored:0 20px 40px -15px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.hover\:bg-deepgreen-light:hover{--tw-bg-opacity:1;background-color:rgb(26 107 83/var(--tw-bg-opacity,1))}.hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgb(229 231 235/var(--tw-bg-opacity,1))}.hover\:bg-orange-600:hover{--tw-bg-opacity:1;background-color:rgb(234 88 12/var(--tw-bg-opacity,1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55/var(--tw-text-opacity,1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        #progress-ring { transition: stroke-dashoffset 0.3s linear, stroke 0.3s; }
+        /* Pomodoro Timer - Web Tools Arsenal と同じデザイン（白い面＋薄い緑の点々、深緑の帯、ドット文字）。ブランド色は深緑 #0F382C */
+        :root {
+            --bg: #FFFFFF;
+            --ink: #0F382C;          /* 主役の深緑（帯・ボタン・数字・点リングの塗り） */
+            --ink-hover: #1F6B52;    /* ホバー・休憩のリング */
+            --on-dark: #D9EBE3;      /* 深緑の上の小さな文字 */
+            --accent-on-dark: #6FD4A8;
+            --text: #12261F;
+            --muted: #4A6159;
+            --line: rgba(15, 56, 44, 0.16);
+            --dot-off: rgba(15, 56, 44, 0.18);
+            --soft: rgba(15, 56, 44, 0.05);
+            --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at center, rgba(15, 56, 44, 0.16) 0 1px, transparent 1.4px);
+            background-size: 48px 48px;
+            background-position: 0 0;
+        }
+        body {
+            margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+            color: var(--text); font-family: var(--sans); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+        }
+        h1, h2, h3, p { margin: 0; font-size: inherit; font-weight: inherit; }
+        button { font: inherit; color: inherit; margin: 0; padding: 0; background: none; border: 0; cursor: pointer; -webkit-appearance: none; appearance: none; }
+        button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+        [hidden] { display: none !important; }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
+        /* ---- ドット文字（SVG。大きさは高さで決める） ---- */
+        svg.dot { display: block; height: 1em; width: auto; flex: none; overflow: visible; }
+        .dot-slot { display: inline-flex; align-items: center; font-family: var(--mono); letter-spacing: 0.08em; line-height: 1; }
+        .dot-fallback { font-family: var(--mono); letter-spacing: 0.08em; }
+
+        /* ---- ヘッダー: 深緑の帯＋白い点々 ---- */
+        .site-header {
+            background-color: var(--ink);
+            background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.12) 0 1px, transparent 1.4px);
+            background-size: 24px 24px; background-position: 12px 12px;
+            color: #FFFFFF;
+        }
+        .site-header-inner { max-width: 400px; margin: 0 auto; padding: 32px 16px 30px; display: flex; flex-direction: column; gap: 12px; }
+        .site-brand { display: flex; align-items: center; gap: 9px; color: var(--on-dark); font-size: 12px; }
+        .brand-mark { flex: none; width: 7px; height: 7px; background: var(--accent-on-dark); }
+        .site-brand svg.dot { height: 14px; }
+        .site-title { color: #FFFFFF; font-size: 32px; line-height: 1; font-weight: 400; }
+        .site-title svg.dot { height: 32px; }
+        .site-title .dot-fallback { font-size: 28px; }
+
+        /* ---- 本体 ---- */
+        .page { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 16px 28px; }
+        .timer-card {
+            width: 100%; max-width: 400px; padding: 32px 24px 28px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 1px 2px rgba(15, 56, 44, 0.06);
+            margin-bottom: 20px;
+        }
+
+        /* 点のリング + 中央の時間 */
+        .ring-wrap { position: relative; width: 100%; max-width: 288px; aspect-ratio: 1 / 1; margin: 0 auto 32px; }
+        .ring { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+        .rd { fill: var(--dot-off); transition: fill .25s linear; }
+        .rd.on { fill: var(--ink); }
+        .ring.is-break .rd.on { fill: var(--ink-hover); }
+        .ring-center {
+            position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            pointer-events: none; padding-top: 4px;
+        }
+        .time-dots { width: 72%; color: var(--ink); }
+        .time-dots svg.dot { width: 100%; height: auto; }
+        .time-text { font-size: 4rem; line-height: 1; font-weight: 300; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+        .status-text { margin-top: 14px; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+        /* ボタン */
+        .controls { display: flex; align-items: center; gap: 16px; width: 100%; margin-bottom: 24px; }
+        .btn-main {
+            flex: 1; min-height: 56px; padding: 12px 16px; border-radius: 14px;
+            background: var(--ink); color: #FFFFFF; font-size: 18px; font-weight: 500;
+            box-shadow: 0 1px 2px rgba(15, 56, 44, 0.12);
+            transition: background-color .2s, transform .15s;
+        }
+        .btn-main:hover { background: var(--ink-hover); }
+        .btn-reset {
+            flex: none; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+            border-radius: 14px; background: #FFFFFF; color: var(--ink); border: 1.5px solid var(--ink);
+            transition: background-color .2s, border-color .2s, color .2s, transform .15s;
+        }
+        .btn-reset:hover { background: var(--soft); border-color: var(--ink-hover); color: var(--ink-hover); }
+        .btn-main:active, .btn-reset:active { transform: scale(0.96); }
+        .btn-reset svg { display: block; width: 32px; height: 32px; }
+
+        /* COMPLETED のピル */
+        .pill {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 11px 22px; background: var(--soft); border: 1px solid var(--line); border-radius: 999px;
+        }
+        .pill-label { color: var(--muted); font-size: 11px; }
+        .pill-label svg.dot { height: 14px; }
+        .pill-count { display: flex; align-items: baseline; gap: 8px; color: var(--ink); }
+        .pod-num { font-size: 16px; }
+        .pod-num svg.dot { height: 16px; }
+        .pod-unit { color: var(--muted); font-size: 10px; }
+        .pod-unit svg.dot { height: 14px; }
+
+        .about-btn {
+            min-height: 44px; padding: 10px 12px; font-size: 14px; color: var(--ink);
+            text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+            transition: color .2s;
+        }
+        .about-btn:hover { color: var(--ink-hover); }
+
+        /* ---- 説明のポップアップ（白い丸角のパネル） ---- */
+        .modal {
+            position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 16px;
+            background: rgba(15, 56, 44, 0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+            transition: opacity .3s;
+        }
+        .modal.hidden { display: none; }
+        .modal.opacity-0 { opacity: 0; }
+        .modal-panel {
+            width: 100%; max-width: 448px; max-height: calc(100vh - 32px); overflow-y: auto; padding: 32px;
+            background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 8px 28px rgba(15, 56, 44, 0.18);
+            transform: scale(1); transition: transform .3s;
+        }
+        .modal-panel.scale-95 { transform: scale(0.95); }
+        .modal-head { text-align: center; margin-bottom: 24px; }
+        .modal-head h2 { font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+        .modal-head h2 span { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
+        .modal-body { font-size: 14px; line-height: 1.75; color: var(--muted); }
+        .modal-body > * + * { margin-top: 16px; }
+        .modal-body .em { font-weight: 700; color: var(--text); border-bottom: 2px solid rgba(15, 56, 44, 0.3); }
+        .howto { margin-top: 24px !important; padding: 16px; background: var(--soft); border-radius: 12px; }
+        .howto h3 { font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        .howto .sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+        .howto .cycle { padding: 12px; border-radius: 8px; text-align: center; font-weight: 500; color: var(--ink); background: rgba(15, 56, 44, 0.07); }
+        .howto .cycle small { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; color: var(--muted); }
+        .btn-close {
+            display: block; width: 100%; margin-top: 32px; min-height: 48px; padding: 12px; border-radius: 14px;
+            background: var(--ink); color: #FFFFFF; font-weight: 500;
+            transition: background-color .2s, transform .15s;
+        }
+        .btn-close:hover { background: var(--ink-hover); }
+        .btn-close:active { transform: scale(0.97); }
+
+        @media (max-width: 400px) {
+            .site-header-inner { padding: 26px 16px 24px; }
+            .timer-card { padding: 28px 24px 24px; }
+            .ring-wrap { margin-bottom: 28px; }
+            .pill { padding: 10px 18px; gap: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
-<body class="bg-[#f5f5f7] flex flex-col items-center justify-center min-h-screen p-4 antialiased">
+<body>
 
-    <!-- タイマーメイン画面 -->
-    <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] w-full max-w-sm p-10 text-center flex flex-col items-center border border-gray-100/50 mb-6">
+    <!-- ヘッダー: 深緑の帯＋白いドット文字 -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <p class="site-brand"><span class="brand-mark" aria-hidden="true"></span><span class="dot-slot" data-dot="FOCUS TIMER" data-dd="0.95">FOCUS TIMER</span></p>
+            <h1 class="site-title"><span class="dot-slot" data-dot="POMODORO">POMODORO</span></h1>
+        </div>
+    </header>
 
-        <div class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-8">Pomodoro</div>
+    <main class="page">
+        <!-- タイマーメイン画面 -->
+        <section class="timer-card">
 
-        <div class="relative flex justify-center items-center mb-10 w-full">
-            <!-- 背景の円 -->
-            <svg class="transform -rotate-90 w-72 h-72" viewBox="0 0 288 288">
-                <circle cx="144" cy="144" r="130" stroke="currentColor" stroke-width="3" fill="transparent" class="text-gray-100" />
-                <!-- プログレスリング -->
-                <circle id="progress-ring" cx="144" cy="144" r="130" stroke="#0F4C3A" stroke-width="6" stroke-linecap="round" fill="transparent" />
-            </svg>
+            <div class="ring-wrap">
+                <!-- 点のリング（点は JS が作る。進み具合で濃い点が増減する） -->
+                <svg id="progress-ring" class="ring" viewBox="0 0 288 288" aria-hidden="true" focusable="false"></svg>
 
-            <!-- 中央のテキスト -->
-            <div class="absolute flex flex-col items-center justify-center pointer-events-none mt-2">
-                <span id="time-display" class="text-7xl font-light text-gray-800 tabular-nums tracking-tighter">25:00</span>
-                <span id="status-text" class="text-sm font-medium text-gray-400 mt-2">作業に集中</span>
+                <!-- 中央のテキスト -->
+                <div class="ring-center">
+                    <!-- ドット数字（JS が描く。読み上げはここで1回だけ） -->
+                    <div id="time-dots" class="time-dots" hidden></div>
+                    <!-- 元の時間の文字（毎秒更新。ドット数字が出たら画面からは隠す） -->
+                    <span id="time-display" class="time-text">25:00</span>
+                    <span id="status-text" class="status-text">作業に集中</span>
+                </div>
             </div>
-        </div>
 
-        <div class="flex justify-center items-center gap-4 mb-8 w-full">
-            <!-- スタート/一時停止ボタン -->
-            <button id="start-btn" onclick="toggleTimer()" class="flex-1 py-4 rounded-full text-white font-medium text-lg bg-deepgreen hover:bg-deepgreen-light transition-all shadow-sm active:scale-95">
-                スタート
-            </button>
+            <div class="controls">
+                <!-- スタート/一時停止ボタン -->
+                <button id="start-btn" onclick="toggleTimer()" class="btn-main">スタート</button>
 
-            <!-- リセットボタン -->
-            <button onclick="resetTimer()" class="w-16 h-16 flex justify-center items-center rounded-full bg-[#f5f5f7] hover:bg-gray-200 text-gray-600 transition-all active:scale-95" title="リセット" aria-label="リセット">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-            </button>
-        </div>
-
-        <div class="bg-[#f5f5f7] rounded-full py-2.5 px-6 flex items-center justify-center gap-3">
-            <span class="text-gray-400 font-medium text-xs uppercase tracking-wider">Completed</span>
-            <div id="session-count" class="font-semibold text-deepgreen flex items-baseline gap-1">
-                <span class="text-lg">0</span> <span class="text-xs">Pods</span>
+                <!-- リセットボタン（アイコンは JS が点で描く。それまでは線画） -->
+                <button id="reset-btn" onclick="resetTimer()" class="btn-reset" title="リセット" aria-label="リセット">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                </button>
             </div>
-        </div>
-    </div>
 
-    <!-- ポモドーロタイマーとは ボタン -->
-    <button onclick="showModal()" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline underline-offset-4 decoration-gray-300">
-        ポモドーロタイマーとは
-    </button>
+            <div class="pill">
+                <span class="dot-slot pill-label" data-dot="COMPLETED" data-dd="0.95">COMPLETED</span>
+                <div id="session-count" class="pill-count">
+                    <span id="pod-num" class="dot-slot pod-num" data-dot="0" data-dd="0.9">0</span><span id="pod-unit" class="dot-slot pod-unit" data-dot="Pods" data-dd="0.95">Pods</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ポモドーロタイマーとは ボタン -->
+        <button onclick="showModal()" class="about-btn">ポモドーロタイマーとは</button>
+    </main>
 
     <!-- 説明ポップアップ (モーダル) -->
-    <div id="welcome-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 transform scale-95 transition-transform duration-300">
-            <div class="text-center mb-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">Pomodoro Timer<br><span class="text-sm text-gray-500 font-normal">（ポモドーロタイマー）とは</span></h2>
+    <div id="welcome-modal" class="modal hidden opacity-0" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-panel scale-95">
+            <div class="modal-head">
+                <h2 id="modal-title">Pomodoro Timer<span>（ポモドーロタイマー）とは</span></h2>
             </div>
 
-            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+            <div class="modal-body">
                 <p>
-                    <span class="font-bold text-gray-800 border-b-2 border-deepgreen/30">作業の集中力と生産性を高める</span>ための時間管理メソッド「ポモドーロ・テクニック」を実践するためのタイマーです。
+                    <span class="em">作業の集中力と生産性を高める</span>ための時間管理メソッド「ポモドーロ・テクニック」を実践するためのタイマーです。
                 </p>
                 <p>
                     1980年代後半にイタリアの起業家フランチェスコ・シリロ氏によって考案されました。<br>
                     彼が学生時代にトマト型（イタリア語でポモドーロ）のキッチンタイマーを使って勉強していたことからこの名がついています。
                 </p>
 
-                <div class="bg-gray-50 rounded-xl p-4 mt-6">
-                    <h3 class="font-semibold text-gray-800 mb-2">使い方説明</h3>
-                    <p class="text-xs text-gray-500 mb-3">基本の仕組みと動き（1サイクル）</p>
-                    <p class="font-medium text-deepgreen bg-deepgreen/5 p-3 rounded-lg text-center">
-                        「25分の作業」＋「5分の休憩」＝ 30分<br>
-                        <span class="text-xs text-gray-500 font-normal mt-1 block">を1つの単位（1ポモドーロ）として繰り返します。</span>
+                <div class="howto">
+                    <h3>使い方説明</h3>
+                    <p class="sub">基本の仕組みと動き（1サイクル）</p>
+                    <p class="cycle">
+                        「25分の作業」＋「5分の休憩」＝ 30分
+                        <small>を1つの単位（1ポモドーロ）として繰り返します。</small>
                     </p>
                 </div>
             </div>
 
-            <button onclick="closeModal()" class="w-full mt-8 py-3 rounded-xl bg-deepgreen text-white font-medium hover:bg-deepgreen-light transition-colors active:scale-95">
-                とじる
-            </button>
+            <button onclick="closeModal()" class="btn-close">とじる</button>
         </div>
     </div>
 
     <script>
+        // ---- 純粋な関数（画面に触らない。テストしやすいようにまとめてある） ----
+        // <pure>
+        const RING_N = 60; // リングの点の数
+
+        // 残りミリ秒 → "MM:SS"（数でなければ 00:00）
+        function formatTime(ms) {
+            const totalSec = Number.isFinite(ms) ? Math.max(0, Math.ceil(ms / 1000)) : 0;
+            const minutes = Math.floor(totalSec / 60);
+            const seconds = totalSec % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // 円周上の点の位置（真上から時計回りに n 個）
+        function ringPoints(n, cx, cy, r) {
+            const pts = [];
+            for (let i = 0; i < n; i++) {
+                const a = (2 * Math.PI * i) / n;
+                pts.push({ x: cx + r * Math.sin(a), y: cy - r * Math.cos(a) });
+            }
+            return pts;
+        }
+
+        // 残りの割合 pct（0〜1）→ 濃い点の個数。残りがあるうちは最低1個。pct が増えれば個数も増える（単調）
+        function ringFilled(pct, n) {
+            const p = Number.isFinite(pct) ? Math.min(1, Math.max(0, pct)) : 0;
+            return Math.min(n, Math.max(0, Math.ceil(p * n - 1e-9)));
+        }
+
+        // ドット数字の SVG（PD は dotfont.js の関数。0-9 と : だけ対応。それ以外は空文字）
+        function digitsMarkup(PD, text) {
+            if (!PD || typeof text !== 'string' || !/^[0-9:]+$/.test(text)) return '';
+            return PD.dotSvg(text, { dot: 0.82, decorative: true });
+        }
+
+        // 11×11 の点の絵（rows: '#' が点）を、丸い点の SVG に
+        function gridDotsSvg(rows, d) {
+            const circles = [];
+            (Array.isArray(rows) ? rows : []).forEach((row, y) => {
+                Array.from(String(row)).forEach((c, x) => {
+                    if (c === '#') circles.push(`<circle cx="${x + 0.5}" cy="${y + 0.5}" r="${d / 2}"/>`);
+                });
+            });
+            return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" fill="currentColor" focusable="false" aria-hidden="true">${circles.join('')}</svg>`;
+        }
+        // </pure>
+
+        // リセットの点アイコン（まわる矢印）
+        const RESET_ICON = [
+            '....###..#.',
+            '..##...###.',
+            '.#.....####',
+            '.#.........',
+            '#.........#',
+            '#.........#',
+            '#.........#',
+            '.#.......#.',
+            '.#.......#.',
+            '..##...##..',
+            '....###....'
+        ];
+
         // 定数設定（25分, 5分, 15分）
         const MODES = {
             pomodoro:   { time: 25 * 60, label: "作業に集中", done: "作業終了。休憩しましょう" },
             shortBreak: { time: 5 * 60,  label: "短い休憩",   done: "休憩終了。作業に戻りましょう" },
             longBreak:  { time: 15 * 60, label: "長い休憩",   done: "1セット完了。お疲れさまでした" }
         };
-        const COLOR_WORK = '#0F4C3A';  // ディープグリーン
-        const COLOR_BREAK = '#3b82f6'; // 休憩はブルー
         const ICON_URL = 'https://kwnfactory2004.github.io/webtools-aresenal/logo.png';
 
         // 状態管理
@@ -125,45 +345,87 @@
 
         // DOM要素の取得
         const timeDisplay = document.getElementById('time-display');
+        const timeDots = document.getElementById('time-dots');
         const statusText = document.getElementById('status-text');
         const startBtn = document.getElementById('start-btn');
         const sessionCountDisplay = document.getElementById('session-count');
         const progressRing = document.getElementById('progress-ring');
 
-        // SVGリングの円周を計算して設定
-        const radius = progressRing.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-        progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
-        progressRing.style.strokeDashoffset = 0;
+        // 点のリングを作る（真上から時計回りに RING_N 個）
+        const ringDots = ringPoints(RING_N, 144, 144, 132).map((p) => {
+            const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            c.setAttribute('class', 'rd');
+            c.setAttribute('cx', p.x.toFixed(2));
+            c.setAttribute('cy', p.y.toFixed(2));
+            c.setAttribute('r', '3.3');
+            progressRing.appendChild(c);
+            return c;
+        });
+        let ringLast = -1;
+
+        // リセットのアイコンを、点の絵に差し替える
+        document.getElementById('reset-btn').innerHTML = gridDotsSvg(RESET_ICON, 0.9);
+
+        // ---- ドット文字（dotfont.js が読めたときだけ。読めない／遅い間は普通の文字のまま） ----
+        let timeDotsText = null;
+        function renderSlot(el) {
+            const t = el.dataset.dot;
+            if (window.PomoDot) el.innerHTML = window.PomoDot.dotText(t, { dot: parseFloat(el.dataset.dd) || undefined });
+            else el.textContent = t;
+        }
+        function renderDigits(text) {
+            if (!window.PomoDot) return;
+            if (text === timeDotsText) return;
+            const html = digitsMarkup(window.PomoDot, text);
+            if (!html) return;
+            timeDots.innerHTML = html;
+            timeDotsText = text;
+            // 読み上げは1回だけ（aria-live は使わない。毎秒は読まれない）
+            timeDots.setAttribute('role', 'img');
+            timeDots.setAttribute('aria-label', text);
+            if (timeDots.hidden) {
+                timeDots.hidden = false;
+                timeDisplay.classList.add('sr-only');
+                timeDisplay.setAttribute('aria-hidden', 'true');
+            }
+        }
+        // dotfont.js の読み込みが終わったら呼ばれる
+        window.pomoDotReady = function () {
+            document.querySelectorAll('.dot-slot').forEach(renderSlot);
+            renderDigits(timeDisplay.textContent);
+        };
 
         const isRunning = () => endTime !== null;
 
         // 画面の表示を更新する
         function updateDisplay() {
-            const totalSec = Math.max(0, Math.ceil(remainingMs / 1000));
-            const minutes = Math.floor(totalSec / 60);
-            const seconds = totalSec % 60;
-            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            const formattedTime = formatTime(remainingMs);
             timeDisplay.textContent = formattedTime;
             document.title = `${formattedTime} - ${MODES[currentMode].label}`;
+            renderDigits(formattedTime);
 
+            // 点のリング: 残りの割合の分だけ、真上から時計回りに濃い点を残す
             const percentage = Math.max(0, remainingMs) / (MODES[currentMode].time * 1000);
-            progressRing.style.strokeDashoffset = circumference - percentage * circumference;
+            const filled = ringFilled(percentage, RING_N);
+            if (filled !== ringLast) {
+                ringDots.forEach((c, i) => c.classList.toggle('on', i < filled));
+                ringLast = filled;
+            }
         }
 
         function updateSessionCount() {
             const podText = completedSessions <= 1 && completedSessions !== 0 ? "Pod" : "Pods";
-            sessionCountDisplay.innerHTML = `<span class="text-lg">${completedSessions}</span> <span class="text-xs">${podText}</span>`;
+            const num = document.getElementById('pod-num');
+            const unit = document.getElementById('pod-unit');
+            num.dataset.dot = String(completedSessions);
+            unit.dataset.dot = podText;
+            renderSlot(num);
+            renderSlot(unit);
         }
 
         function setButton(state) {
             const labels = { start: 'スタート', pause: '一時停止', resume: '再開' };
             startBtn.textContent = labels[state];
-            const running = state === 'pause';
-            startBtn.classList.toggle('bg-orange-500', running);
-            startBtn.classList.toggle('hover:bg-orange-600', running);
-            startBtn.classList.toggle('bg-deepgreen', !running);
-            startBtn.classList.toggle('hover:bg-deepgreen-light', !running);
         }
 
         // モードを切り替える
@@ -171,7 +433,7 @@
             currentMode = mode;
             remainingMs = MODES[mode].time * 1000;
             statusText.textContent = MODES[mode].label;
-            progressRing.setAttribute('stroke', mode === 'pomodoro' ? COLOR_WORK : COLOR_BREAK);
+            progressRing.classList.toggle('is-break', mode !== 'pomodoro');
         }
 
         // 一定間隔で残り時間を再計算する
@@ -354,6 +616,12 @@
         let visited = false;
         try { visited = !!localStorage.getItem('pomodoroVisited'); } catch (e) {}
         if (!visited) showModal();
+    </script>
+    <!-- ドット文字（ポータル Web Tools Arsenal と同じ dotfont.js）。読み込めたら、ヘッダー・数字・ラベルをドットにする -->
+    <script type="module">
+        import { dotText, dotSvg, supportsDot } from './dotfont.js';
+        window.PomoDot = { dotText, dotSvg, supportsDot };
+        if (typeof window.pomoDotReady === 'function') window.pomoDotReady();
     </script>
   <script>
     // PWA:オフラインでも開けるように Service Worker を登録
